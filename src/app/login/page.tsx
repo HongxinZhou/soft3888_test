@@ -18,7 +18,7 @@ export default function Login() {
           <input
             type="text"
             placeholder="email@example.com"
-            className="text-gray-600 bg-gray-50 border text-sm rounded-lg p-2"
+            className="bg-gray-100 p-3 rounded ring-1 ring-gray-200 min-w-[20rem]"
           />
         </label>
         <label className="flex-1 flex flex-col">
@@ -27,7 +27,7 @@ export default function Login() {
         <input
           type={showPassword ? 'text' : 'password'}
           placeholder="enter password"
-          className="text-gray-600 bg-gray-50 border text-sm rounded-lg p-2 min-w-[20rem]"
+          className="bg-gray-100 p-3 rounded ring-1 ring-gray-200 min-w-[20rem]"
         />
         <div>
           <button 
