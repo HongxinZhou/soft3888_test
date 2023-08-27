@@ -7,7 +7,7 @@ export default function Page() {
     <div className="flex-1 flex items-center justify-center">
       <Button
           component={Link}
-          href="/profile" //{link到search page，并且改一下按钮的位置，Amber和Jermey}
+          href="/search" 
           type="submit"
           className="mt-16"
         >
