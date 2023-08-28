@@ -5,24 +5,33 @@ import Link from "next/link";
 
 export default function Images() {
   return (
-    <div className="flex justify-center items-center mb-8">
-      <button
-        onClick={handleClickForBackButton}
-        className="text-green-400 mr-4"
-      >
-        Back
-      </button>
+    <div className="min-h-[25rem] w-full flex flex-col items-center gap-1 p-12 bg-white">
 
-      <label className="text-3xl font-bold text-gray-700 w-36 text-center">
-        Images
-      </label>
+      
+      <div className="mb-8 text-center">
+        <label className="text-3xl font-bold text-gray-700 w-36 text-center">
+          Images
+        </label>
+      </div>
 
-      <button
-        onClick={handleClickForNextButton}
-        className="text-green-400 ml-4"
-      >
-        Next
-      </button>
+      <br />
+
+      <div className="text-center flex flex-row space-x-18">
+      
+        <button
+          onClick={handleClickForBackButton}
+          className="text-green-400 mr-4"
+        >
+          Back
+        </button>
+
+        <button
+          onClick={handleClickForNextButton}
+          className="text-green-400 ml-4"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 
