@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/common/Button";
-import { Checkbox } from "@material-tailwind/react";
 import Link from "next/link";
 import { useId } from "react";
 import React, { useState } from 'react';
