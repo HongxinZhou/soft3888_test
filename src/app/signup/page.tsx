@@ -66,7 +66,7 @@ export default function SignUp() {
         </div>
         <Button
           component={Link}
-          href="/home"
+          href="/profile"
           type="submit"
           className="mt-16"
         >
