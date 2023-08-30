@@ -91,6 +91,28 @@ export default function Page() {
           />
         </div>
         <br />
+        <label className="block text-xl font-bold text-gray-700 w-36">
+          📍 Location
+        </label>
+        <br />
+        <div className={inputContainer}>
+          <label className={inputFont}>long</label>
+          <input
+            type="text"
+            onChange={(e) => setLocationLong(String(e.target.value))}
+            className={inputClassName}
+          />
+        </div>
+        <br />
+        <div className={inputContainer}>
+          <label className={inputFont}> lat</label>
+          <input
+            type="text"
+            id="location_lat"
+            onChange={(e) => setLocationLat(String(e.target.value))}
+            className={inputClassName}
+          />
+        </div>
       </div>
       <Button
         onClick={() => {
