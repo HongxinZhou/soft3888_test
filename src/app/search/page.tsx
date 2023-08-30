@@ -1,5 +1,5 @@
 "use client";
-
+import axios from "axios";
 import { Button } from "@/components/common/Button";
 import { useEffect, useState } from "react";
 // import ComboBoxWithLabel from "@/components/common/ComboBoxWithLabel";
@@ -23,6 +23,11 @@ export default function Page() {
     { value: "option3", label: "Option 3" },
   ];
 
+  const [searchLocation, setSearchLocation] = useState<string>("");
+  const [suggestedLocations, setSuggestedLocations] = useState<any[]>([]);
+
+  const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoieWNoZTMzNDAiLCJhIjoiY2xsdzJrYzhsMW1lcTNrczJ0c3RtNGk2MyJ9.VQ36wZakYJmHuptA8BHkLQ";
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCount(0);
@@ -44,6 +49,34 @@ export default function Page() {
       locationLat,
     );
   }, [count]);
+
+  const fetchLocations = async (query: string) => {
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+      query
+    )}.json?access_token=${MAPBOX_ACCESS_TOKEN}`;
+    try {
+      const response = await axios.get(url);
+      setSuggestedLocations(response.data.features);
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchLocation(query);
+    if (query) {
+      fetchLocations(query);
+    } else {
+      setSuggestedLocations([]);
+    }
+  };
+
+  const handleSelectLocation = (place_name: string) => {
+    setSearchLocation(place_name);
+    setSuggestedLocations([]);
+  };
+
   return (
     <div className="min-h-[25rem] w-full flex flex-col items-center gap-10 p-10 bg-white">
       <div className="p-8 bg-white shadow-md rounded-lg w-96">
@@ -55,7 +88,7 @@ export default function Page() {
         </button>
         <br />
         <label className="block text-xl font-bold text-gray-700 w-36">
-          🔍 Filter
+          Filter
         </label>
 
         <br />
@@ -92,26 +125,27 @@ export default function Page() {
         </div>
         <br />
         <label className="block text-xl font-bold text-gray-700 w-36">
-          📍 Location
+          Location
         </label>
         <br />
         <div className={inputContainer}>
-          <label className={inputFont}>long</label>
+          <label className={inputFont}>Location Name</ label>
           <input
             type="text"
-            onChange={(e) => setLocationLong(String(e.target.value))}
+            value={searchLocation}
+            onChange={handleLocationChange}
             className={inputClassName}
-          />
-        </div>
-        <br />
-        <div className={inputContainer}>
-          <label className={inputFont}> lat</label>
-          <input
-            type="text"
-            id="location_lat"
-            onChange={(e) => setLocationLat(String(e.target.value))}
-            className={inputClassName}
-          />
+        />
+          <ul>
+            {suggestedLocations.map((location) => (
+              <li
+                key={location.id}
+                onClick={() => handleSelectLocation(location.place_name)}
+              >
+                {location.place_name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <Button
