@@ -129,23 +129,28 @@ export default function Page() {
         </label>
         <br />
         <div className={inputContainer}>
-          <label className={inputFont}>Location Name</ label>
-          <input
-            type="text"
-            value={searchLocation}
-            onChange={handleLocationChange}
-            className={inputClassName}
-        />
-          <ul>
-            {suggestedLocations.map((location) => (
-              <li
-                key={location.id}
-                onClick={() => handleSelectLocation(location.place_name)}
-              >
-                {location.place_name}
-              </li>
-            ))}
-          </ul>
+          <label className={inputFont}>Location Name</label>
+          <div className="relative">
+            <input
+              type="text"
+              value={searchLocation}
+              onChange={handleLocationChange}
+              className={`${inputClassName}`}
+            />
+            {suggestedLocations.length > 0 && (
+              <ul className="absolute z-10 w-full border border-gray-300 bg-white max-h-[150px] overflow-y-auto">
+                {suggestedLocations.slice(0, 6).map((location) => (
+                  <li
+                    key={location.id}
+                    onClick={() => handleSelectLocation(location.place_name)}
+                    className="cursor-pointer hover:bg-gray-200 p-2"
+                  >
+                    {location.place_name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
       <Button
