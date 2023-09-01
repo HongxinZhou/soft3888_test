@@ -38,3 +38,10 @@ To synchronise the built static web app and the native apps, run `npx cap sync`.
 To synchronise the capacitor project settings, run `npx cap copy`.
 
 To run the Android or iOS projects, run `npx cap open android` or `npx cap open ios` respectively.
+
+
+## Relative dependencies install
+`npm install axios`
+`npm install @headlessui/react`
+`npm install react-modal`
+`npm install react-select @emotion/react @emotion/styled`
