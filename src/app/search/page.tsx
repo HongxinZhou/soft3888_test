@@ -4,6 +4,9 @@ import { Button } from "@/components/common/Button";
 import { useEffect, useState } from "react";
 // import ComboBoxWithLabel from "@/components/common/ComboBoxWithLabel";
 import ComboBox from "@/components/common/ComboBox";
+import Link from "next/link";
+
+
 export default function Page() {
   const [count, setCount] = useState<number>(0);
   const [cropsType, setCropsType] = useState<string>("");
@@ -80,12 +83,13 @@ export default function Page() {
   return (
     <div className="min-h-[25rem] w-full flex flex-col items-center gap-10 p-10 bg-white">
       <div className="p-8 bg-white shadow-md rounded-lg w-96">
-        <button
-          onClick={handleClick}
-          className="relative right-15 text-green-400"
-        >
-          Back
-        </button>
+        <Button
+            intent="unstyled"
+            className="w-5 text-primary underline"
+            component={Link} href= {"profile"}
+          >
+            Back
+          </Button>
         <br />
         <label className="block text-xl font-bold text-gray-700 w-36">
           Filter
@@ -153,21 +157,10 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Button
-        onClick={() => {
-          // setCount(count + 1);
-          handleConfirm();
-        }}
-        style={{ width: "300px" }} // Adjust the width as needed
-      >
-        Confirm
-      </Button>
+      <Button component={Link} href={"images"}>
+          Confirm
+        </Button>
     </div>
   );
-  function handleClick() {
-    window.location.href = "profile";
-  }
-  function handleConfirm() {
-    window.location.href = "images";
-  }
+  
 }

@@ -1,8 +1,13 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/images/page": "app/images/page.js",
+  "/capture/page": "app/capture/page.js",
+  "/label/page": "app/label/page.js",
+  "/leaderboard/page": "app/leaderboard/page.js",
   "/login/page": "app/login/page.js",
+  "/profile/page": "app/profile/page.js",
   "/search/page": "app/search/page.js",
-  "/profile/page": "app/profile/page.js"
+  "/signup/page": "app/signup/page.js",
+  "/test/page": "app/test/page.js",
+  "/images/page": "app/images/page.js"
 }

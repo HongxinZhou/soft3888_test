@@ -40,19 +40,20 @@ export default function Images() {
 
       <div className="text-center flex flex-row space-x-18">
       
-        <button
-          onClick={handleClickForBackButton}
+        <Button
           className="text-green-400 mr-4"
+          component={Link} href= {"search"}
+         
         >
           Back
-        </button>
+        </Button>
 
-        <button
-          onClick={handleClickForNextButton}
+        <Button
           className="text-green-400 ml-4"
+          component={Link} href= {"profile"}
         >
           Next
-        </button>
+        </Button>
       </div>
       <div>
         <button 
@@ -85,11 +86,5 @@ export default function Images() {
 
   );
 
-  function handleClickForBackButton() {
-    window.location.href = "/search";
-  }
 
-  function handleClickForNextButton() {
-    window.location.href = "/profile";
-  }
 }
