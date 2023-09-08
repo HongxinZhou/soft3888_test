@@ -4,6 +4,7 @@ import { ProgressCircle } from "@/components/common/ProgressCircle";
 import { useEffect, useState } from "react";
 import NavigationBar from "@/components/core/NavigationBar";
 import Link from "next/link";
+import { Button } from "@/components/common/Button";
 
 export default function Profile() {
   const [userXp, setUserXp] = useState<number>(0);
@@ -15,9 +16,6 @@ export default function Profile() {
   return (
     <div className="bg-primary min-h-[25rem] w-full flex flex-col items-center gap-10 p-10">
       <div className="absolute top-2 right-2">
-        <Link href="/login" legacyBehavior>
-          <a className="text-gray-200 hover:text-white">Logout</a>
-        </Link>
       </div>
       <h1 className="text-gray-200">Profile</h1>
       <ProgressCircle
@@ -29,6 +27,10 @@ export default function Profile() {
         pidGain={0.01}
         className="w-80 h-80"
       ></ProgressCircle>
+      <Button 
+          className="text-gray-200 hover:text-white"
+          component={Link} href={"login"}
+          >Logout</Button>
       <footer>
         <NavigationBar></NavigationBar>
       </footer>

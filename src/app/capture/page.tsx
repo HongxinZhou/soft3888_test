@@ -1,4 +1,6 @@
 import { Button } from "@/components/common/Button";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-2">
@@ -20,6 +22,11 @@ export default function Home() {
         </select>
       </label>
       <Button> Capture</Button>
+      <Button
+       className="text-black hover:text-white"
+        component={Link} href={"profile"}
+        >Back
+      </Button>
     </div>
   );
 }
